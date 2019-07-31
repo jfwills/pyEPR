@@ -8,7 +8,7 @@ from . import AttrDict
 #------------------------------------------------------------
 # Directories 
 'Folder to save result data in'
-root_dir = r'D:\zkm-data-pyEPR'
+root_dir = r'C:\Users\wills\sims'
 
 '''
 pyEPR_default_options

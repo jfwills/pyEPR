@@ -284,30 +284,28 @@ class pyEPR_HFSS(object):
     Further, it allows one to calcualte dissipation, etc
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, project_info, verbose=True, append_analysis=False):
         '''
         Parameters:
         -------------------
             project_info    : Project_Info
-                Suplpy the project info or the parameters to create pinfo
+                Suplpy the project info
+            append_analysis : True / False
+                Wheather to sppend or overwrite the save filed data.
+                This feature is still in the works.
 
         Example use:
         -------------------
         '''
-        if (len(args) == 1) and (args[0].__class__.__name__ == 'Project_Info'): #isinstance(args[0], Project_Info): # fails on module repload with changes
-            project_info = args[0]
-        else:
-            assert len(args) == 0, 'Since you did not pass a Project_info object as a arguemnt, we now assuem you are trying to create a project info object here by apassing its arguments. See Project_Info. It does not take any arguments, only kwargs.'
-            project_info = Project_Info(*args, **kwargs) 
+        #TODO: change verbose to logger. remove verbose flags
 
-        2
         # Input
         self.pinfo = project_info
         if self.pinfo.check_connected() is False:
             self.pinfo.connect()
 
-        self.verbose          = True #TODO: change verbose to logger. remove verbose flags
-        self.append_analysis  = False #TODO
+        self.verbose          = verbose
+        self.append_analysis  = append_analysis
 
         # hfss connect module
         self.fields           = self.setup.get_fields()
@@ -1076,7 +1074,7 @@ class pyEPR_HFSS(object):
             if mesh is not None:
                 hdf['v'+variation+'/mesh_stats'] = mesh  # dataframe
 
-            conv, _ = self.get_convergence(variation)
+            conv = self.get_convergence(variation)
             if conv is not None:
                 hdf['v'+variation+'/convergence'] = conv  # dataframe
 
