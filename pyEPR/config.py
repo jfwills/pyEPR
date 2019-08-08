@@ -35,8 +35,8 @@ class Dissipation_params:
 	# bulk dielectric:
 	# refs:  https://arxiv.org/abs/1308.1743
 	#        http://arxiv.org/pdf/1509.01854.pdf
-	tan_delta_sapp = 1e-6  # tan(delta) for bulk surface
-	epsi           = 10    # dielectric
+	tan_delta_sapp = 1e-4  # tan(delta) for bulk surface
+	epsi           = 11.45    # dielectric (silicon cryo)
 
 	# surface dielectric:
 	# ref: http://arxiv.org/pdf/1509.01854.pdf

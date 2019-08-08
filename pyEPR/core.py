@@ -1662,6 +1662,9 @@ class pyEPR_Analysis(object):
 
         print( '\n*** Q_coupling'  )
         print(result['Q_coupling'])
+
+        print( '\n*** ZPF'  )
+        print(result['ZPF'])
         
     def plot_Hresults(self, variable=None, fig=None):
         '''
